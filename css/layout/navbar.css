@@ -1,0 +1,74 @@
+.f-navbar {
+  float: left;
+  width: 178px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #38393d;
+}
+
+.f-navbar .f-logo-container {
+  height: 48px;
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.f-logo-container .f-logo {
+  height: 32px;
+  width: 100%;
+  background-image: url('../../content/img/Logo_Module_TiengViet_White.66947422.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.f-logo-container .f-icon {
+  cursor: pointer;
+}
+
+.f-navbar-content {
+  padding-top: 14px;
+  overflow: auto;
+  scrollbar-color: #d4d7dc #f1f1f1;
+  scrollbar-width: thin;
+}
+
+.f-navbar-item {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding-left: 8px;
+  padding-right: 14px;
+  border-left: 6px solid transparent;
+  color: #fff;
+  position: relative;
+  cursor: pointer;
+}
+
+.f-navbar-item .f-icon {
+  margin-right: 8px;
+}
+
+
+.f-navbar-item.active {
+  border-left-color: #2ca01c;
+  font-weight: 700;
+  position: relative;
+}
+
+.f-navbar-item:hover::before,
+.f-navbar-item.active::before {
+  content: "";
+  background: #ebedf0;
+  opacity: .2;
+  width: calc(100% + 6px);
+  height: 42px;
+  left: -6px;
+  top: 0;
+  position: absolute;
+}

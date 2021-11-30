@@ -1,0 +1,40 @@
+@import url('./layout/header.css');
+@import url('./layout/navbar.css');
+@import url('./layout/content.css');
+@import url('./common/common.css');
+@import url('./base/button.css');
+@import url('./base/input.css');
+@import url('./base/radio.css');
+@import url('./base/icon.css');
+@import url('./base/table.css');
+@import url('./base/paging.css');
+
+
+body {
+  font-family: MISA Font;
+  font-size: 13px;
+  margin: 0;
+}
+
+/* FONT CHỮ */
+
+@font-face {
+  font-family: MISA Font;
+  src: url('../content/fonts/notosans-regular.2cb88a13.woff2');
+}
+
+
+@font-face {
+  font-family: MISA Font Bold;
+  src: url('../content/fonts/notosans-bold.3ede5aff.woff2');
+}
+
+@font-face {
+  font-family: MISA Font Italic;
+  src: url('../content/fonts/notosans-italic.1c1aaac9.woff2');
+}
+
+@font-face {
+  font-family: MISA Semibold;
+  src: url('../content/fonts/notosans-semibold.df3e6dc4.woff2');
+}

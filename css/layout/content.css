@@ -1,0 +1,9 @@
+.f-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f5f8;
+  padding-left: 20px;
+  padding-right: 30px;
+  height: calc(100vh - 48px);
+  width: cal(100% - 178px);
+}

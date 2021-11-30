@@ -1,0 +1,211 @@
+.f-icon {
+  background-image: url('../../content/img/Sprites.64af8f61.svg');
+  background-repeat: no-repeat;
+}
+
+.icon-32 {
+  height: 32px;
+  width: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  flex-shrink: 0;
+}
+
+.icon-24 {
+  height: 24px;
+  width: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  flex-shrink: 0;
+}
+
+.icon-16 {
+  height: 16px;
+  width: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  flex-shrink: 0;
+}
+
+.icon-14 {
+  height: 14px;
+  width: 14px;
+  min-width: 14px;
+  min-height: 14px;
+  flex-shrink: 0;
+}
+
+.f-icon-9dots {
+  background-position: -425px -86px;
+}
+
+.f-icon-search {
+  background-position: -992px -360px;
+}
+
+.f-icon-refresh {
+  background-position: -423px -201px;
+}
+
+.f-icon-refresh:hover {
+  background-position: -1097px -88px;
+}
+
+/* HEADER ICONS */
+
+.f-icon-burger {
+  background-position: -843px -30px;
+  /* x + 1,  y - 2*/
+}
+
+.f-icon-chervon-right {
+  background-position: -80px -360px;
+}
+
+.f-icon-bell {
+  background-position: -788px -30px;
+}
+
+.f-icon-avatar {
+  background-position: -352px -894px;
+}
+
+.f-icon-chervon-down {
+  background-position: -1076px -32px;
+}
+
+/* NAVBAR ICONS */
+
+.f-icon-dashboard {
+  background-position: -30px -1628px;
+}
+
+.f-navbar-item.active .f-icon-dashboard {
+  background-position: -30px -1585px;
+}
+
+
+.f-icon-cash {
+  background-position: -73px -1628px;
+}
+
+.f-navbar-item.active .f-icon-cash {
+  background-position: -73px -1585px;
+}
+
+
+.f-icon-bank {
+  background-position: -117px -1628px;
+}
+
+.f-navbar-item.active .f-icon-bank {
+  background-position: -117px -1585px;
+}
+
+
+.f-icon-bag {
+  background-position: -161px -1628px;
+}
+
+.f-navbar-item.active .f-icon-bag {
+  background-position: -161px -1585px;
+}
+
+
+.f-icon-cart {
+  background-position: -204px -1628px;
+}
+
+.f-navbar-item.active .f-icon-cart {
+  background-position: -204px -1585px;
+}
+
+
+.f-icon-invoice {
+  background-position: -249px -1628px;
+}
+
+.f-navbar-item.active .f-icon-invoice {
+  background-position: -249px -1585px;
+}
+
+
+.f-icon-storage {
+  background-position: -291px -1628px;
+}
+
+.f-navbar-item.active .f-icon-storage {
+  background-position: -291px -1585px;
+}
+
+
+.f-icon-tools {
+  background-position: -336px -1628px;
+}
+
+.f-navbar-item.active .f-icon-tools {
+  background-position: -336px -1585px;
+}
+
+
+.f-icon-fixed-assets {
+  background-position: -378px -1630px;
+}
+
+.f-navbar-item.active .f-icon-fixed-assets {
+  background-position: -378px -1587px;
+}
+
+
+.f-icon-tax {
+  background-position: -423px -1630px;
+}
+
+.f-navbar-item.active .f-icon-tax {
+  background-position: -423px -1587px;
+}
+
+
+.f-icon-price {
+  background-position: -467px -1628px;
+}
+
+.f-navbar-item.active .f-icon-price {
+  background-position: -467px -1585px;
+}
+
+
+.f-icon-general {
+  background-position: -510px -1628px;
+}
+
+.f-navbar-item.active .f-icon-general {
+  background-position: -510px -1585px;
+}
+
+
+.f-icon-budget {
+  background-position: -378px -1659px;
+}
+
+.f-navbar-item.active .f-icon-budget {
+  background-position: -422px -1659px;
+}
+
+
+.f-icon-report {
+  background-position: -547px -1628px;
+}
+
+.f-navbar-item.active .f-icon-report {
+  background-position: -547px -1585px;
+}
+
+
+.f-icon-finance {
+  background-position: -204px -1664px;
+}
+
+.f-navbar-item.active .f-icon-finance {
+  background-position: -249px -1664px;
+}

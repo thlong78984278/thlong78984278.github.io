@@ -1,13 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quản lý nhân viên</title>
-  
+
+  <!-- Load css dùng chung -->
+  <link rel="stylesheet" href="../css/main.css">
+  <!-- Load css dùng riêng -->
+  <link rel="stylesheet" href="../css/page/employee.css">
 </head>
+
 <body>
-  
+  <!-- NAVBAR -->
+  <div class="f-navbar">
+    <div class="f-logo-container">
+      <div class="f-icon f-icon-9dots icon-24" style="margin-right: 10px;"></div>
+      <div class="f-logo"></div>
+    </div>
+    <div class="f-navbar-content">
+      <div class="f-navbar-item">
+        <div class="f-icon f-icon-dashboard icon-24"></div>
+        <div class="f-navbar-item-desc">Tổng quan</div>
+      </div>
+      <div class="f-navbar-item active">
+        <div class="f-icon f-icon-cash icon-24"></div>
+        <div class="f-navbar-item-desc">Tiền mặt</div>
+      </div>
+      <div class="f-navbar-item">
+        <div class="f-icon f-icon-bank icon-24"></div>
+        <div class="f-navbar-item-desc">Tiền gửi</div>
+      </div>
+      <div class="f-navbar-item">
+        <div class="f-icon f-icon-bag icon-24"></div>
+        <div class="f-navbar-item-desc">Mua hàng</div>
+      </div>
+      <div class="f-navbar-item">
+        <div class="f-icon f-icon-cart icon-24"></div>
+        <div class="f-navbar-item-desc">Bán hàng</div>
+      </div>
+      <div class="f-navbar-item">
+        <div class="f-icon f-icon-invoice icon-24"></div>
+        <div class="f-navbar-item-desc">Quản lý hóa đơn</div>
+      </div>
+      <div class="f-navbar-item">
+        <div class="f-icon f-icon-storage icon-24"></div>
+        <div class="f-navbar-item-desc">Kho</div>
+      </div>
+      <div class="f-navbar-item">
+        <div class="f-icon f-icon-tools icon-24"></div>
+        <div class="f-navbar-item-desc">Công cụ dụng cụ</div>
+      </div>
+      <div class="f-navbar-item">
+        <div class="f-icon f-icon-fixed-assets icon-24"></div>
+        <div class="f-navbar-item-desc">Tài sản cố định</div>
+      </div>
+      <div class="f-navbar-item">
+        <div class="f-icon f-icon-tax icon-24"></div>
+        <div class="f-navbar-item-desc">Thuế</div>
+      </div>
+      <div class="f-navbar-item">
+        <div class="f-icon f-icon-price icon-24"></div>
+        <div class="f-navbar-item-desc">Giá thành</div>
+      </div>
+      <div class="f-navbar-item">
+        <div class="f-icon f-icon-general icon-24"></div>
+        <div class="f-navbar-item-desc">TỔng hợp</div>
+      </div>
+      <div class="f-navbar-item">
+        <div class="f-icon f-icon-budget icon-24"></div>
+        <div class="f-navbar-item-desc">Ngân sách</div>
+      </div>
+      <div class="f-navbar-item">
+        <div class="f-icon f-icon-report icon-24"></div>
+        <div class="f-navbar-item-desc">Báo cáo</div>
+      </div>
+      <div class="f-navbar-item">
+        <div class="f-icon f-icon-finance icon-24"></div>
+        <div class="f-navbar-item-desc">Phân tích tài chính</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="f-header">
+    <div class="f-icon f-icon-burger icon-24"></div>
+    <div class="f-header-branch">
+      <div class="f-branch-name">Công ty tnhh sản xuất - Thương mại - Dịch vụ Qui Phúc</div>
+      <div class="f-icon f-icon-chervon-right icon-14"></div>
+    </div>
+
+    <div class="f-flex-space"></div>
+
+    <div class="f-icon f-icon-bell icon-24"></div>
+
+    <div class="f-header-user">
+      <div class="f-icon f-icon-avatar icon-32"></div>
+      <div class="f-user-fullname">Nguyễn Văn Mạnh</div>
+      <div class="f-icon f-icon-chervon-down icon-14"></div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="f-content">
+    <!-- CONTENT-TITLE -->
+    <div class="f-content-title">
+      <div class="content-title-text">Nhân viên</div>
+      <div class="f-flex-space"></div>
+      <button class="f-btn">Thêm mới nhân viên</button>
+    </div>
+
+    <!-- CONTENT-GRID -->
+    <div class="f-content-grid">
+      <!-- GRID-TOOLBAR -->
+      <div class="f-content-toolbar">
+        <div class="f-flex-space"></div>
+        <div class="toolbar-search-box">
+          <input type="text" placeholder="Tìm theo mã, tên nhân viên" class="f-input">
+          <div class="f-icon f-icon-search icon-16"></div>
+        </div>
+        <div class="refresh-btn">
+          <div class="f-icon f-icon-refresh icon-24"></div>
+        </div>
+      </div>
+
+      <!-- GRID-TABLE -->
+      <table class="f-table">
+        <thead>
+          <tr>
+            <th>a</th>
+            <th>b</th>
+            <th>c</th>
+            <th>d</th>
+            <th>e</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+            <td>d</td>
+            <td>e</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- GRID-PAGING -->
+      <div class="f-table-paging">
+        
+      </div>
+    </div>
+  </div>
+
 </body>
+
 </html>

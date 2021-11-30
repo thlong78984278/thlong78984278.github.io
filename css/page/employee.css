@@ -1,0 +1,57 @@
+.f-content .f-content-title {
+  width: 100%;
+  background-color: #f4f5f8;
+  height: 24px;
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+}
+
+.f-content-title .content-title-text {
+  font-family: MISA Font Bold;
+  font-size: 24px;
+}
+
+.f-content-grid {
+  background-color: salmon;
+}
+
+
+
+/* CONTENT-TOOLBAR */
+
+.f-content .f-content-toolbar {
+  width: calc(100% - 32px);
+  height: 36px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+.f-content-toolbar .toolbar-search-box {
+  position: relative;
+  margin-right: 10px;
+}
+
+.toolbar-search-box .f-input {
+  padding-left: 10px;
+  padding-right: 36px;
+  width: 240px;
+}
+
+.toolbar-search-box .f-icon-search {
+  position: absolute;
+  top:0;
+  left: 100%;
+  transform: translate(-28px, 8px);
+  cursor: pointer;
+}
+
+.f-content-toolbar .refresh-btn {
+  padding: 0 6px;
+}
+
+.refresh-btn .f-icon-refresh {
+  cursor: pointer;
+}

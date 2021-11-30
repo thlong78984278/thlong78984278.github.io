@@ -1,0 +1,36 @@
+
+/* BUTTON CHÍNH */
+.f-btn {
+  padding: 6px 16px;
+  background-color: #2ca01c;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.f-btn:hover {
+  background-color: #35bf22;
+}
+
+.f-btn:active {
+  background-color: #248b15;
+}
+
+/* BUTTON PHỤ */
+.f-second-btn {
+  padding: 6px 16px;
+  border: 1px solid #8d9096;
+  background-color: transparent;
+  border-radius: 3px;
+  color: #111;
+  cursor: pointer;
+}
+
+.f-second-btn:hover {
+  background-color: #d2d3d6;
+}
+
+.f-second-btn:active {
+  background-color: #bbbcbc;
+}

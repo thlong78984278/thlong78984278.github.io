@@ -1,0 +1,18 @@
+.f-input {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 2px;
+  border: 1px solid #babec5;
+  box-sizing: border-box;
+}
+
+.f-input:hover,
+.f-input-hovered {
+  outline: 1px solid #e2e2e2;
+}
+
+.f-input:focus,
+.f-input-focused {
+  border: 1px solid #2ca01c;
+  outline: unset;
+}

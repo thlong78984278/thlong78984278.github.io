@@ -1,0 +1,7 @@
+.f-table-paging {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    width: 100%;
+    background-color: cyan;
+}
