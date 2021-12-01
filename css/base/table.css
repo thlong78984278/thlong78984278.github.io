@@ -1,6 +1,104 @@
 table.f-table {
   width: 100%;
   border-spacing: unset;
+  color: #111;
   border: unset;
-  border-collapse: collapse;
+}
+
+table.f-table tr th,
+table.f-table tr td {
+  padding: 0 10px;
+}
+
+table.f-table tr input[type="checkbox"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-spacing: 0;
+  box-sizing: border-box;
+}
+
+table.f-table tr th:last-child,
+table.f-table tr td:last-child {
+  border-left: 1px solid #c7c7c7;
+  border-right: none;
+  box-sizing: border-box;
+}
+
+/* TABLE-HEAD */
+
+table.f-table thead tr {
+  height: 34px;
+  min-height: 34px;
+}
+
+table.f-table thead tr th {
+  position: sticky;
+  top: 0;
+  vertical-align: middle;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: #eceef1 !important;
+  border-bottom: 1px solid #c7c7c7;
+  border-right: 1px solid #c7c7c7;
+  z-index: 1;
+}
+
+table.f-table thead th:first-child,
+table.f-table thead th:last-child {
+  z-index: 2;
+}
+
+/* TABLE-BODY */
+
+table.f-table tbody tr {
+  height: 44px;
+  min-height: 44px;
+}
+
+table.f-table tbody tr td {
+  border-bottom: 1px solid #c7c7c7;
+  border-right: 1px solid #c7c7c7;
+}
+
+/* Position sticky */
+
+table.f-table tr td:first-child,
+table.f-table tr th:first-child {
+  position: sticky;
+  background-color: #fff;
+  left: 0;
+}
+
+table.f-table tr td:last-child,
+table.f-table tr th:last-child {
+  position: sticky;
+  background-color: #fff;
+  right: 0;
+  box-sizing: border-box;
+}
+
+
+/* DROPDOWN-BTN */
+table.f-table .f-utility-dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-utility-dropdown .dropdown-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  width: 26px;
+  cursor: pointer;
+}
+
+.f-utility-dropdown .f-dropdown-text {
+  padding: 6px 0 6px 16px !important;
+  color: #0075c0;
+  font-weight: 600;
 }

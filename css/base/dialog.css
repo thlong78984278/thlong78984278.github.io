@@ -1,0 +1,138 @@
+.f-dialog-modal {
+  z-index: 999;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0000007a !important;
+}
+
+.f-dialog-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.f-dialog-box .f-info-text {
+  font-size: 12px;
+  font-weight: 700;
+  padding-bottom: 4px;
+  white-space: nowrap;
+}
+
+/* DIALOG-HEADER */
+.f-dialog-header {
+  display: flex;
+  background-color: #fff;
+  justify-content: space-between;
+}
+
+.f-dialog-box .f-dialog-header-body {
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  position: relative;
+  padding: 20px 12px 20px 32px;
+  background-color: #FFFFFF;
+  align-items: center;
+}
+
+.f-dialog-header-body>.f-dialog-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.f-dialog-header-body>.show-dialog-customer,
+.f-dialog-header-body>.show-dialog-vendor {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.f-dialog-header-body input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.f-dialog-header-close {
+  display: flex;
+  padding: 12px;
+}
+
+.f-dialog-header-close .f-icon-help {
+  margin-right: 6px;
+}
+
+.f-dialog-header-close .f-icon {
+  cursor: pointer;
+}
+
+/* DIALOG-CONTENT */
+.f-dialog-content {
+  display: flex;
+  width: 900px;
+}
+
+
+/* CONTENT-RIGHT */
+.f-dialog-box .f-dialog-content-right {
+  display: flex;
+  padding: 0 32px 24px 26px;
+  background-color: #FFFFFF;
+  width: 50%;
+}
+
+.f-dialog-content-right .f-dialog-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 48px;
+  background-color: #F4F4F4;
+  border-radius: 50%;
+  font-size: 24px;
+  font-stretch: condensed;
+  min-width: 48px;
+  margin-right: 10px;
+  color: #FFC300;
+}
+
+.f-dialog-content-right .f-dialog-text {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+/* CONTENT-LEFT */
+.f-dialog-content-left {
+  width: 50%;
+  background-color: #ffffff;
+  padding-left: 32px;
+}
+
+/* CONTENT-BOTTOM */
+.f-dialog-content-bottom {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #fff;
+  padding: 0 32px;
+}
+
+
+/* DIALOG-FOOTER */
+.f-dialog-box .f-dialog-footer {
+  height: 60px;
+  background-color: #fff;
+  border-radius: 0 0 4px 4px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 32px;
+  padding-left: 32px;
+}
+
+.f-dialog-box .f-dialog-content-right {
+  flex-direction: column;
+}

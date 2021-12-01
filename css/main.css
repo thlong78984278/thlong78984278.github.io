@@ -8,12 +8,15 @@
 @import url('./base/icon.css');
 @import url('./base/table.css');
 @import url('./base/paging.css');
+@import url('./base/checkbox.css');
+@import url('./base/dialog.css');
 
 
 body {
   font-family: MISA Font;
   font-size: 13px;
   margin: 0;
+  color: #111;
 }
 
 /* FONT CHỮ */

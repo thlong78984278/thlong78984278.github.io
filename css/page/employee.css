@@ -13,7 +13,12 @@
 }
 
 .f-content-grid {
-  background-color: salmon;
+  background-color: #fff;
+  /* margin-right: 30px; */
+  /* margin-left: 16px; */
+  overflow: auto;
+  scrollbar-width: thin;
+  max-height: calc(100vh - 240px);
 }
 
 

@@ -112,45 +112,887 @@
       <button class="f-btn">Thêm mới nhân viên</button>
     </div>
 
-    <!-- CONTENT-GRID -->
-    <div class="f-content-grid">
-      <!-- GRID-TOOLBAR -->
-      <div class="f-content-toolbar">
+    <!-- CONTENT-TOOLBAR -->
+    <div class="f-content-toolbar">
+      <div class="f-flex-space"></div>
+      <div class="toolbar-search-box">
+        <input type="text" placeholder="Tìm theo mã, tên nhân viên" class="f-input">
+        <div class="f-icon f-icon-search icon-16"></div>
+      </div>
+      <div class="refresh-btn">
+        <div class="f-icon f-icon-refresh icon-24"></div>
+      </div>
+    </div>
+
+    <div style="background-color: #fff; padding-left: 16px; padding-right: 30px;">
+      <!-- CONTENT-GRID -->
+      <div class="f-content-grid">
+        <!-- GRID-TABLE -->
+        <table class="f-table">
+          <thead>
+            <tr>
+              <th class="text-align-left"><input type="checkbox"></th>
+              <th class="text-align-left" style="min-width: 150px; width: 150px;">Mã nhân viên</th>
+              <th class="text-align-left" style="min-width: 250px; width: 250px;">Tên nhân viên</th>
+              <th class="text-align-left" style="min-width: 120px;">Giới tính</th>
+              <th class="text-align-center" style="min-width: 150px;">Ngày sinh</th>
+              <th class="text-align-left" style="min-width: 200px;">Số CMND</th>
+              <th class="text-align-left" style="min-width: 250px; width: 250px;">Chức danh</th>
+              <th class="text-align-left" style="min-width: 250px;">Tên đơn vị</th>
+              <th class="text-align-left" style="min-width: 150px;">Số tài khoản</th>
+              <th class="text-align-left" style="min-width: 250px; width: 250px;">Tên ngân hàng</th>
+              <th class="text-align-left" style="min-width: 250px; width: 250px;">Chi nhánh TK ngân hàng</th>
+              <th class="text-align-right" style="min-width: 120px; width: 120px; padding-right:12px;">Chức năng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-align-left"><input type="checkbox"></td>
+              <td class="text-align-left">NV0001</td>
+              <td class="text-align-left">Trang Hải Long</td>
+              <td class="text-align-left">Nam</td>
+              <td class="text-align-center">31/12/2000</td>
+              <td class="text-align-left">036619213</td>
+              <td class="text-align-left">Giám đốc</td>
+              <td class="text-align-left">Phòng Marketing</td>
+              <td class="text-align-left">092183019482</td>
+              <td class="text-align-left">Vietcombank</td>
+              <td class="text-align-left">Ba Đình</td>
+              <td class="text-align-center">
+                <div class="f-utility-dropdown">
+                  <div class="f-dropdown-text text-align-center">Sửa</div>
+                  <div class="dropdown-btn">
+                    <div class="f-icon icon-16 f-icon-arrow-up--blue"></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+
+
+
+          </tbody>
+        </table>
+      </div>
+      <!-- GRID-PAGING -->
+      <div class="f-table-paging">
+        <div class="total-record">Tổng số: 62 bản ghi</div>
         <div class="f-flex-space"></div>
-        <div class="toolbar-search-box">
-          <input type="text" placeholder="Tìm theo mã, tên nhân viên" class="f-input">
-          <div class="f-icon f-icon-search icon-16"></div>
+
+        <div class="record-per-page">
+          <input type="text" class="f-input">
         </div>
-        <div class="refresh-btn">
-          <div class="f-icon f-icon-refresh icon-24"></div>
+
+        <div class="page-navigator">
+          <div class="previous-page">Trước</div>
+          <div class="page-number-list">
+            <div class="page-number">1</div>
+            <div class="page-number active">2</div>
+            <div class="page-number">3</div>
+          </div>
+          <div class="next-page">Sau</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- POPUP -->
+
+  <div id="dlgPopup" class="f-dialog-modal">
+    <div class="f-dialog-box">
+      <div class="f-dialog-header">
+
+        <div class="f-dialog-header-body">
+          <div class="f-dialog-title">Thông tin nhân viên</div>
+          <div class="show-dialog-customer">
+            <input type="checkbox"> Là khách hàng
+          </div>
+          <div class="show-dialog-vendor">
+            <input type="checkbox"> Là nhà cung cấp
+          </div>
+        </div>
+
+        <div class="f-dialog-header-close">
+          <div class="f-icon f-icon-help icon-24"></div>
+          <div class="f-icon f-icon-close icon-24"></div>
         </div>
       </div>
 
-      <!-- GRID-TABLE -->
-      <table class="f-table">
-        <thead>
-          <tr>
-            <th>a</th>
-            <th>b</th>
-            <th>c</th>
-            <th>d</th>
-            <th>e</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>a</td>
-            <td>b</td>
-            <td>c</td>
-            <td>d</td>
-            <td>e</td>
-          </tr>
-        </tbody>
-      </table>
 
-      <!-- GRID-PAGING -->
-      <div class="f-table-paging">
-        
+      <div class="f-dialog-content">
+        <div class="f-dialog-content-left">
+          <div class="f-row f-row-flex">
+            <div class="f-col w40">
+              <div class="f-info-text">Mã <text style="color:red;">*</text></div>
+              <input type="text" id="txtIdentityPlace" class="f-input w100" fieldName="IdentityPlace">
+            </div>
+            <div class="f-col w60">
+              <div class="f-info-text">Tên <text style="color:red;">*</text></div>
+              <input type="text" id="txtIdentityPlace" class="f-input w100" fieldName="IdentityPlace">
+            </div>
+          </div>
+          <div class="f-row f-row-flex">
+            <div class="f-col w100">
+              <div class="f-info-text">Đơn vị</div>
+              <input type="text" id="txtEmail" class="f-input w100" placeholder="abc@xyz" fieldName="Email">
+            </div>
+          </div>
+          <div class="f-row f-row-flex">
+            <div class="f-col w100">
+              <div class="f-info-text">Chức danh</div>
+              <input type="text" id="txtEmail" class="f-input w100" placeholder="abc@xyz" fieldName="Email">
+            </div>
+          </div>
+        </div>
+        <div class="f-dialog-content-right">
+          <div class="f-row f-row-flex">
+            <div class="f-col w40">
+              <div class="f-info-text">Ngày sinh</div>
+              <input type="date" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+            </div>
+            <div class="f-col w60" style="padding-left: 10px">
+              <div class="f-info-text">Giới tính</div>
+
+              <div class="f-radio-box" style="align-items: center; height: 32px;">
+                <div class="f-radio-option">
+                  <input type="radio" name="fav">
+                  <label for="1" class="f-radio-label">Nam</label>
+                </div>
+
+                <div class="f-radio-option">
+                  <input type="radio" name="fav">
+                  <label for="0" class="f-radio-label">Nữ</label>
+                </div>
+
+                <div class="f-radio-option">
+                  <input type="radio" name="fav">
+                  <label for="2" class="f-radio-label">Khác</label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="f-row f-row-flex">
+            <div class="f-col w60">
+              <div class="f-info-text">Số CMTND/Căn cước</div>
+              <input type="text" id="txtIdentityNumber" class="f-input w100" fieldName="IdentityNumber">
+            </div>
+            <div class="f-col w40">
+              <div class="f-info-text">Ngày cấp</div>
+              <input type="date" id="dtIdentityDate" class="f-input w100" fieldName="IdentityDate">
+            </div>
+          </div>
+
+          <div class="f-row f-row-flex">
+            <div class="f-col w100">
+              <div class="f-info-text">Nơi cấp</div>
+              <input type="date" id="dtIdentityDate" class="f-input w100" fieldName="IdentityDate">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="f-dialog-content-bottom">
+        <div class="f-row f-row-flex">
+          <div class="f-col w100">
+            <div class="f-info-text text-align-left">Địa chỉ</div>
+            <input type="text" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+          </div>
+        </div>
+
+        <div class="f-row f-row-flex">
+          <div class="f-col w25">
+            <div class="f-info-text text-align-left">ĐT di động</div>
+            <input type="text" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+          </div>
+          <div class="f-col w25">
+            <div class="f-info-text text-align-left">ĐT cố định</div>
+            <input type="text" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+          </div>
+          <div class="f-col w25">
+            <div class="f-info-text text-align-left">Email</div>
+            <input type="text" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+          </div>
+        </div>
+
+        <div class="f-row f-row-flex">
+          <div class="f-col w25">
+            <div class="f-info-text text-align-left">Tài khoản ngân hàng</div>
+            <input type="text" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+          </div>
+          <div class="f-col w25">
+            <div class="f-info-text text-align-left">Tên ngân hàng</div>
+            <input type="text" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+          </div>
+          <div class="f-col w25">
+            <div class="f-info-text text-align-left">Chi nhánh</div>
+            <input type="text" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+          </div>
+        </div>
+
+        <div class="f-row f-row-flex" style="height: 50px; border-bottom: 1px solid #e0e0e0">
+
+        </div>
+      </div>
+
+
+      <div class="f-dialog-footer">
+        <button id="btnCancelPopup" class="f-second-btn">Hủy</button>
+        <div class="f-flex-space"></div>
+        <button class="f-second-btn" id="btnSaveData" style="margin: 0 10px;">Cất</button>
+        <button class="f-btn">Cất và Thêm</button>
       </div>
     </div>
   </div>

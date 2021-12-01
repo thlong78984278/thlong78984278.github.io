@@ -35,6 +35,18 @@
   flex-shrink: 0;
 }
 
+.f-icon-help {
+  background-position: -88px -144px;
+}
+
+.f-icon-close {
+  background-position: -145px -144px;
+}
+
+.f-icon-arrow-up--blue {
+  background-position: -896px -359px;
+}
+
 .f-icon-9dots {
   background-position: -425px -86px;
 }
