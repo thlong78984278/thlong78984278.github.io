@@ -1,6 +1,7 @@
 
 /* BUTTON CHÍNH */
 .f-btn {
+  height: 34px;
   padding: 6px 16px;
   background-color: #2ca01c;
   border: 1px solid transparent;
@@ -20,6 +21,7 @@
 
 /* BUTTON PHỤ */
 .f-second-btn {
+  height: 34px;
   padding: 6px 16px;
   border: 1px solid #8d9096;
   background-color: transparent;

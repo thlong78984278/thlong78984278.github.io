@@ -50,3 +50,33 @@
 .f-col+.f-col{
   margin-left: 6px;
 }
+
+/* loading */
+.f-loading {
+  z-index: 999;
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(14, 4, 4, 0.32);
+}
+
+.f-loading .f-loading-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(50%, 50%);
+  height: 32px;
+  width: 32px;
+  background-image: url('../../content/loading.svg');
+  background-position: center;
+  background-size: contain;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
