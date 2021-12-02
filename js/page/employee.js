@@ -4,7 +4,6 @@ $(document).ready(function () {
 
 class EmployeePage {
   FormMode = null;
-  currentlySelectedEmployee = null;
   apiUrl = 'http://amis.manhnv.net/api/v1';
   employeeApiUrl = `${this.apiUrl}/Employees`;
   departmentApiUrl = `${this.apiUrl}/Departments`;
@@ -14,6 +13,7 @@ class EmployeePage {
     this.initEvents();
     // load dữ liệu bảng
     this.loadData();
+    this.loadDepartmentComboboxData();
   }
 
   initEvents() {
@@ -22,6 +22,10 @@ class EmployeePage {
     $('#btnCancelPopup').click(this.closePopup);
     // Hiển thị form thêm mới nhân viên
     $('#btnAddEmployee').click(this.addEmployee.bind(this));
+    // Hiển thị form update nhân viên
+    $('#tblEmployee').on('click', '.f-utility-dropdown .f-dropdown-text', this.updateEmployee.bind(this));
+    // Lưu thông tin
+    $('#btnSaveData').click(this.saveData.bind(this));
   }
 
   /* #region Nạp dữ liệu */
@@ -94,11 +98,36 @@ class EmployeePage {
       // Thêm data employeeId cho từng dòng dữ liệu nhân viên
       $(`tbody tr:nth-child(1)`).data('value', employeeId);
     });
-    
+
 
     // Ẩn màn hình chờ sau khi đã kết thúc nạp dữ liệu
     $('.f-loading').hide();
 
+  }
+
+  /**
+   * Lấy mã định danh và tên của phòng ban, load vào combobox cbxDeparment
+   * Author: Trang Hải Long (21/11/2021)
+   */
+  loadDepartmentComboboxData() {
+    $.ajax({
+      type: "GET",
+      url: this.departmentApiUrl,
+      success: function (response) {
+        for (const department of response) {
+          let optionHTML = `
+                <div class="f-combobox-item" value="${department.DepartmentId}">
+                  <div class="combobox-item-text">${department.DepartmentName}</div>
+                </div>
+        `
+          // Binding item combobox Department
+          $('#cbxDepartment .f-combobox-data').append(optionHTML);
+        }
+        // Gán dữ liệu combobox Department để tìm kiếm bằng việc gõ các kí tự
+        let itemDataElements = $('#cbxDepartment').find('.f-combobox-data').children();
+        $('#cbxDepartment').data('itemDataElements', itemDataElements);
+      }
+    });
   }
 
   /* #endregion */
@@ -108,7 +137,10 @@ class EmployeePage {
    * Author: Trang Hải Long (23/11/2021)
    */
   closePopup() {
+    // Ẩn màn hình Popup
     $('#dlgPopup').hide();
+    // Reset dữ liệu employeeId khi tắt popup
+    $('#btnSaveData').data('employeeId', null);
   }
 
   /**
@@ -121,8 +153,17 @@ class EmployeePage {
     // Hiển thị Form thông tin nhân viên
     $('#dlgPopup').show();
     // Xóa dữ liệu đã nhập trước đó
-    $('input').val(null)
-    $('.f-custom-combobox .f-combobox-item').removeClass('combobox-item-active');
+    $('#dlgPopup input[type!="radio"]').val(null)
+    // Uncheck radio
+    for (const btn of $('#dlgPopup input[type="radio"]')) {
+      btn.checked = false;
+    }
+    // Uncheck checkbox
+    for (const btn of $('#dlgPopup input[type="checkbox"]')) {
+      btn.checked = false;
+    }
+
+    $('.f-custom-combobox .f-combobox-item').removeClass('combo-actions');
     // Lấy mã nhân viên mới và hiển thị lên ô nhập liệu
     $.ajax({
       type: "GET",
@@ -140,14 +181,15 @@ class EmployeePage {
    * Author: Trang Hải Long (23/11/2021)
    */
   updateEmployee(event) {
+    let me = this
     // FormMode: Edit
     this.FormMode = Enum.FormMode.Edit;
     CommonJS.clearSelection();
     // Hiển thị Form thông tin nhân viên
     $('#dlgPopup').show();
-    let employeeId = $(event.currentTarget).data('value');
+    let employeeId = $(event.currentTarget.parentElement.parentElement.parentElement).data('value');
     // Xóa dữ liệu đã nhập trước đó
-    $('input').val(null)
+    $('input[type!="radio"]').val(null)
 
     // Lấy dữ liệu nhân viên theo mã nhân viên
     $.ajax({
@@ -155,12 +197,11 @@ class EmployeePage {
       url: `${this.employeeApiUrl}/${employeeId}`,
       success: function (employee) {
         // Bind dữ liệu input
-        let inputs = $('.m-dialog-content-right input[fieldName]');
+        let inputs = $('#dlgPopup input[fieldName]');
         for (const input of inputs) {
           // Lấy ra fieldName của input hiện tại và thông tin của nhân viên tương ứng với fieldName đó
           let fieldName = $(input).attr('fieldName');
           let value = employee[fieldName];
-          // debugger
           if (value) {
             // Trường hợp đặc biệt input form là date phải định dạng lại value
             if (input.type == 'date') {
@@ -173,30 +214,26 @@ class EmployeePage {
         }
 
         // Bind dữ liệu combobox
-        $('#cbxGender input').val(employee.GenderName);
-        $('#cbxGender').data('value', employee.Gender);
-
-        $('#cbxWorkStatus').data('value', employee.WorkStatus);
-        switch (employee.WorkStatus) {
-          case 0:
-            $('#cbxWorkStatus input').val('Đang thử việc');
-            break;
-          case 1:
-            $('#cbxWorkStatus input').val('Đã nghỉ hưu');
-            break;
-          case 2:
-            $('#cbxWorkStatus input').val('Đã nghỉ việc');
-            break;
-          default:
-            break;
-        }
-
-        $('#cbxPosition input').val(employee.PositionName);
-        $('#cbxPosition').data('value', employee.PositionId);
-        $('#cbxDepartment input').val(employee.DepartmentName);
-        $('#cbxDepartment').data('value', employee.DepartmentId);
+        let departmentId = employee.DepartmentId;
+        $('#cbxDepartment').data('value', departmentId);
+        let departmentName = '';
+        $.ajax({
+          type: "GET",
+          async: false,
+          url: me.departmentApiUrl + `/${departmentId}`,
+          success: function (response) {
+            departmentName =  response.DepartmentName;
+          },
+          error: function (res) {
+            console.log(res);
+          }
+        });
+        $('#cbxDepartment input').val(departmentName);
       }
     });
+
+    // Gán dữ liệu id của nhân viên vào nút save để tiện thực hiện lưu thông tin nhân viên lên database
+    $('#btnSaveData').data('employeeId', employeeId);
   }
 
   /**
@@ -205,12 +242,12 @@ class EmployeePage {
    */
   saveData(event) {
     let me = this;
-    let employeeId = me.currentlySelectedEmployee;
+    let employeeId = $('#btnSaveData').data('employeeId');
     // Tạo employee object lưu dữ liệu Form
     let employee = {};
 
     // Lấy dữ liệu từ input Form:
-    let inputs = $('.m-dialog-content-right input[fieldName]');
+    let inputs = $('#dlgPopup input[fieldName]');
     for (const input of inputs) {
       // Lấy ra fieldName của input hiện tại và thông tin của nhân viên tương ứng với fieldName đó
       let fieldName = $(input).attr('fieldName');
@@ -221,11 +258,15 @@ class EmployeePage {
         employee[fieldName] = null;
     }
 
+    // Lấy dữ liệu từ radio
+    for (const btn of $('#dlgPopup input[type="radio"]')) {
+      if (btn.checked) {
+        employee['Gender'] = btn.value;
+      }
+    }
+
     // Lấy dữ liệu từ combobox Form:
-    employee['Gender'] = $('#cbxGender').data('value');
     employee['DepartmentId'] = $('#cbxDepartment').data('value');
-    employee['PositionId'] = $('#cbxPosition').data('value');
-    employee['WorkStatus'] = $('#cbxWorkStatus').data('value');
 
     // Gọi api cất dữ liệu
     if (this.FormMode == Enum.FormMode.Add) {
@@ -236,10 +277,10 @@ class EmployeePage {
         dataType: "json",
         contentType: "application/json",
         success: function (response) {
-          // Toast message: Thêm mới thành công
-          CommonJS.toastMsgPopup($('.m-toast-add'));
-          // load lại dữ liệu
           me.loadData();
+        },
+        error: function (res) {
+          console.log(res);
         }
       });
     } else {
@@ -250,34 +291,16 @@ class EmployeePage {
         dataType: "json",
         contentType: "application/json",
         success: function (response) {
-          // Toast message: Sửa thành công
-          CommonJS.toastMsgPopup($('.m-toast-update'));
           // load lại dữ liệu
           me.loadData();
+        },
+        error: function (res) {
+          console.log(res);
         }
       });
     }
 
-    $('#dlgPopup').hide();
-  }
-
-  /**
-   * Xóa dòng dữ liệu được chọn
-   * Author: Trang Hải Long (23/11/2021)
-   */
-  delete() {
-    let me = this;
-    let employeeId = this.currentlySelectedEmployee;
-
-    $.ajax({
-      type: "DELETE",
-      url: `${this.employeeApiUrl}/${employeeId}`,
-      success: function (response) {
-        CommonJS.toastMsgPopup($('.m-toast-delete'));
-        // Load lại dữ liệu
-        me.loadData();
-      }
-    });
+    me.closePopup();
   }
 
 }

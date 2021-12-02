@@ -156,7 +156,7 @@
 
         <div class="record-per-page">
           <div class="f-custom-combobox bottom-combobox w100" id="cbxPaging">
-            <input class="f-combobox f-combobox-input" style="width: 168px;" type="text" placeholder="">
+            <input class="f-combobox f-combobox-input" type="text" placeholder="">
             <button class="f-combobox-btn combobox-dropdown-btn">
               <div class="f-icon icon-16 f-icon-arrow-down"></div>
             </button>
@@ -222,33 +222,22 @@
           <div class="f-row f-row-flex">
             <div class="f-col w40">
               <div class="f-info-text">Mã <text style="color:red;">*</text></div>
-              <input type="text" id="txtIdentityPlace" class="f-input w100" fieldName="IdentityPlace">
+              <input type="text" id="txtEmployeeCode" class="f-input w100" fieldName="EmployeeCode">
             </div>
             <div class="f-col w60">
               <div class="f-info-text">Tên <text style="color:red;">*</text></div>
-              <input type="text" id="txtIdentityPlace" class="f-input w100" fieldName="IdentityPlace">
+              <input type="text" id="txtEmployeeName" class="f-input w100" fieldName="EmployeeName">
             </div>
           </div>
           <div class="f-row f-row-flex">
             <div class="f-col w100">
               <div class="f-info-text">Đơn vị <text style="color:red;">*</text></div>
-
-              <div class="f-custom-combobox w100" id="cbxDepartmentFilter">
+              <div class="f-custom-combobox w100" id="cbxDepartment">
                 <input class="f-combobox f-combobox-input" type="text" placeholder="">
                 <button class="f-combobox-btn combobox-dropdown-btn">
                   <div class="f-icon icon-16 f-icon-arrow-down"></div>
                 </button>
-
                 <div class="f-combobox-data">
-                  <div class="f-combobox-item" value='1'>
-                    <div class="combobox-item-text">Nam</div>
-                  </div>
-                  <div class="f-combobox-item" value='0'>
-                    <div class="combobox-item-text">Nữ</div>
-                  </div>
-                  <div class="f-combobox-item" value='2'>
-                    <div class="combobox-item-text">Khác</div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -256,7 +245,8 @@
           <div class="f-row f-row-flex">
             <div class="f-col w100">
               <div class="f-info-text">Chức danh</div>
-              <input type="text" id="txtEmail" class="f-input w100" placeholder="abc@xyz" fieldName="Email">
+              <input type="text" id="txtPositionName" class="f-input w100" placeholder="abc@xyz"
+                fieldName="PositionName">
             </div>
           </div>
         </div>
@@ -268,24 +258,20 @@
             </div>
             <div class="f-col w60" style="padding-left: 10px">
               <div class="f-info-text">Giới tính</div>
-
               <div class="f-radio-box" style="align-items: center; height: 32px;">
                 <div class="f-radio-option">
-                  <input type="radio" name="fav">
-                  <label for="1" class="f-radio-label">Nam</label>
+                  <input type="radio" name="Gender" value="1">
+                  <label class="f-radio-label">Nam</label>
                 </div>
-
                 <div class="f-radio-option">
-                  <input type="radio" name="fav">
-                  <label for="0" class="f-radio-label">Nữ</label>
+                  <input type="radio" name="Gender" value="0">
+                  <label class="f-radio-label">Nữ</label>
                 </div>
-
                 <div class="f-radio-option">
-                  <input type="radio" name="fav">
-                  <label for="2" class="f-radio-label">Khác</label>
+                  <input type="radio" name="Gender" value="2">
+                  <label class="f-radio-label">Khác</label>
                 </div>
               </div>
-
             </div>
           </div>
 
@@ -303,7 +289,7 @@
           <div class="f-row f-row-flex">
             <div class="f-col w100">
               <div class="f-info-text">Nơi cấp</div>
-              <input type="date" id="dtIdentityDate" class="f-input w100" fieldName="IdentityDate">
+              <input type="text" id="dtIdentityPlace" class="f-input w100" fieldName="IdentityPlace">
             </div>
           </div>
         </div>
@@ -312,36 +298,36 @@
         <div class="f-row f-row-flex">
           <div class="f-col w100">
             <div class="f-info-text text-align-left">Địa chỉ</div>
-            <input type="text" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+            <input type="text" id="txtAddress" class="f-input w100" fieldName="Address">
           </div>
         </div>
         <div class="f-row f-row-flex">
           <div class="f-col w25">
             <div class="f-info-text text-align-left">ĐT di động</div>
-            <input type="text" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+            <input type="text" id="txtTelephoneNumber" class="f-input w100" fieldName="TelephoneNumber">
           </div>
           <div class="f-col w25">
             <div class="f-info-text text-align-left">ĐT cố định</div>
-            <input type="text" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+            <input type="text" id="txtPhoneNumber" class="f-input w100" fieldName="PhoneNumber">
           </div>
           <div class="f-col w25">
             <div class="f-info-text text-align-left">Email</div>
-            <input type="text" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+            <input type="text" id="txtEmail" class="f-input w100" fieldName="Email">
           </div>
         </div>
 
         <div class="f-row f-row-flex">
           <div class="f-col w25">
             <div class="f-info-text text-align-left">Tài khoản ngân hàng</div>
-            <input type="text" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+            <input type="text" id="txtBankAccountNumber" class="f-input w100" fieldName="BankAccountNumber">
           </div>
           <div class="f-col w25">
             <div class="f-info-text text-align-left">Tên ngân hàng</div>
-            <input type="text" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+            <input type="text" id="txtBankName" class="f-input w100" fieldName="BankName">
           </div>
           <div class="f-col w25">
             <div class="f-info-text text-align-left">Chi nhánh</div>
-            <input type="text" id="dtDateOfBirth" class="f-input w100" fieldName="DateOfBirth">
+            <input type="text" id="txtBankBranchName" class="f-input w100" fieldName="BankBranchName">
           </div>
         </div>
         <div class="f-row f-row-flex" style="height: 50px; border-bottom: 1px solid #e0e0e0">
@@ -351,8 +337,8 @@
       <div class="f-dialog-footer">
         <button id="btnCancelPopup" class="f-second-btn">Hủy</button>
         <div class="f-flex-space"></div>
-        <button class="f-second-btn" id="btnSaveData" style="margin: 0 10px;">Cất</button>
-        <button class="f-btn">Cất và Thêm</button>
+        <button class="f-second-btn" style="margin: 0 10px;">Cất</button>
+        <button class="f-btn" id="btnSaveData">Cất và Thêm</button>
       </div>
     </div>
   </div>

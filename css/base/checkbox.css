@@ -13,10 +13,6 @@ input[type="checkbox"]{
   justify-content: center;
 }
 
-input[type="checkbox"]:checked{
-  background-color: #2ca01c;
-}
-
 input[type="checkbox"]::before{
     content: "";
     position: absolute;
@@ -29,6 +25,10 @@ input[type="checkbox"]::before{
     border-style: solid;
     border-width: 0 2px 2px 0;
     display: none;
+}
+
+input[type="checkbox"]:checked::before {
+  border-color: #2ca01c;
 }
 
 input[type="checkbox"]:checked::before{
