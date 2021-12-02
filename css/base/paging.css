@@ -1,4 +1,5 @@
 .f-table-paging {
+    z-index: 3;
     display: flex;
     align-items: center;
     flex-shrink: 0;
@@ -26,12 +27,14 @@
     align-items: center;
 }
 
-.page-navigator .previous-page {
+.page-navigator #previousPage {
     margin-right: 13px;
+    cursor: pointer;
 }
 
-.page-navigator .next-page {
+.page-navigator #nextPage {
     margin-left: 13px;
+    cursor: pointer;
 }
 
 .page-navigator .page-number-list {
@@ -41,6 +44,7 @@
 
 .page-number-list .page-number {
     padding: 0 6px;
+    cursor: pointer;
 }
 
 .page-navigator .page-number.active {

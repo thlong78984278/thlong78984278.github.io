@@ -53,10 +53,14 @@
   cursor: pointer;
 }
 
-.f-content-toolbar .refresh-btn {
+.f-content-toolbar #btnRefresh {
   padding: 0 6px;
 }
 
-.refresh-btn .f-icon-refresh {
+#btnRefresh .f-icon-refresh {
+  cursor: pointer;
+}
+
+#cbxPaging .f-combobox-input {
   cursor: pointer;
 }

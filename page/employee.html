@@ -116,10 +116,10 @@
     <div class="f-content-toolbar">
       <div class="f-flex-space"></div>
       <div class="toolbar-search-box">
-        <input type="text" placeholder="Tìm theo mã, tên nhân viên" class="f-input">
+        <input id="searchText" type="text" placeholder="Tìm theo mã, tên nhân viên" class="f-input">
         <div class="f-icon f-icon-search icon-16"></div>
       </div>
-      <div class="refresh-btn">
+      <div id="btnRefresh">
         <div class="f-icon f-icon-refresh icon-24"></div>
       </div>
     </div>
@@ -151,44 +151,41 @@
       </div>
       <!-- GRID-PAGING -->
       <div class="f-table-paging">
-        <div class="total-record">Tổng số: 62 bản ghi</div>
+        <div class="total-record">Tổng số: <b><span id="totalRecord"></span></b> bản ghi</div>
         <div class="f-flex-space"></div>
 
         <div class="record-per-page">
           <div class="f-custom-combobox bottom-combobox w100" id="cbxPaging">
-            <input class="f-combobox f-combobox-input" type="text" placeholder="">
+            <input class="f-combobox f-combobox-input" type="text" placeholder="" readonly="true">
             <button class="f-combobox-btn combobox-dropdown-btn">
               <div class="f-icon icon-16 f-icon-arrow-down"></div>
             </button>
 
             <div class="f-combobox-data">
               <div class="f-combobox-item" value='10'>
-                <div class="combobox-item-text">10 bản ghi trên một trang</div>
+                <div class="combobox-item-text">10 bản ghi trên 1 trang</div>
               </div>
               <div class="f-combobox-item" value='20'>
-                <div class="combobox-item-text">20 bản ghi trên một trang</div>
+                <div class="combobox-item-text">20 bản ghi trên 1 trang</div>
               </div>
               <div class="f-combobox-item" value='30'>
-                <div class="combobox-item-text">30 bản ghi trên một trang</div>
+                <div class="combobox-item-text">30 bản ghi trên 1 trang</div>
               </div>
               <div class="f-combobox-item" value='40'>
-                <div class="combobox-item-text">40 bản ghi trên một trang</div>
+                <div class="combobox-item-text">40 bản ghi trên 1 trang</div>
               </div>
               <div class="f-combobox-item" value='50'>
-                <div class="combobox-item-text">50 bản ghi trên một trang</div>
+                <div class="combobox-item-text">50 bản ghi trên 1 trang</div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="page-navigator">
-          <div class="previous-page">Trước</div>
+          <div id="previousPage">Trước</div>
           <div class="page-number-list">
-            <div class="page-number">1</div>
-            <div class="page-number active">2</div>
-            <div class="page-number">3</div>
           </div>
-          <div class="next-page">Sau</div>
+          <div id="nextPage">Sau</div>
         </div>
       </div>
     </div>
@@ -341,6 +338,13 @@
         <button class="f-btn" id="btnSaveData">Cất và Thêm</button>
       </div>
     </div>
+  </div>
+
+  <!-- CONTEXT MENU -->
+  <div id="contextMenu" style="display: none;">
+    <button id="duplicate">Nhân bản</button>
+    <button id="delete">Xóa</button>
+    <button id="stopUsing">Ngừng sử dụng</button>
   </div>
 
   <!-- LOADING SCREEN -->
