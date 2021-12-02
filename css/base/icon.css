@@ -35,6 +35,8 @@
   flex-shrink: 0;
 }
 
+
+
 .f-icon-help {
   background-position: -88px -144px;
 }
@@ -61,6 +63,12 @@
 
 .f-icon-refresh:hover {
   background-position: -1097px -88px;
+}
+
+/* COMBOBOX ICONS */
+
+.f-icon-arrow-down {
+  background-position: -560px -359px;
 }
 
 /* HEADER ICONS */

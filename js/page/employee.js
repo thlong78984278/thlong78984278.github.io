@@ -122,7 +122,7 @@ class EmployeePage {
     $('#dlgPopup').show();
     // Xóa dữ liệu đã nhập trước đó
     $('input').val(null)
-    $('.m-custom-combobox .m-combobox-item').removeClass('combobox-item-active');
+    $('.f-custom-combobox .f-combobox-item').removeClass('combobox-item-active');
     // Lấy mã nhân viên mới và hiển thị lên ô nhập liệu
     $.ajax({
       type: "GET",

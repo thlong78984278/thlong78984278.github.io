@@ -14,7 +14,7 @@ input[type="checkbox"]{
 }
 
 input[type="checkbox"]:checked{
-  background-color: #019160;
+  background-color: #2ca01c;
 }
 
 input[type="checkbox"]::before{

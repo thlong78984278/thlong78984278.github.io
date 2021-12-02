@@ -17,7 +17,7 @@
     margin: 0 16px;
     width: 200px;
     min-width: 200px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     box-sizing: border-box;
 }
 

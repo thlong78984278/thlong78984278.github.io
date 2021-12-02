@@ -101,4 +101,5 @@ table.f-table .f-utility-dropdown {
   padding: 6px 0 6px 16px !important;
   color: #0075c0;
   font-weight: 600;
+  cursor: pointer;
 }
