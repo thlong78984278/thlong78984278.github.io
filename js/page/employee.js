@@ -26,16 +26,33 @@ class EmployeePage {
     $('#btnRefresh').click(this.loadData.bind(this));
     $('#btnClosePopup').click(this.closePopup);
     $('#btnCancelPopup').click(this.closePopup);
+
+    // Các chức năng Thêm / Sửa / Xóa cơ bản --------------------------------------------------------------------------
     // Hiển thị form thêm mới nhân viên
     $('#btnAddEmployee').click(this.addEmployee.bind(this));
     // Hiển thị form update nhân viên
     $('#tblEmployee').on('click', '.f-utility-dropdown .f-dropdown-text', this.updateEmployee.bind(this));
     // Hiển thị contextMenu khi nhấn dropdown
     $('#tblEmployee').on('click', '.f-utility-dropdown .dropdown-btn', this.showContextMenu);
-    // Xóa dòng dữ liệu
-    $('#delete').click(this.delete.bind(this));
-    // Lưu thông tin
+    // Xóa dòng dữ liệu đồng thời hiển thị form thông báo "Bạn có chắc xóa?"
+    // Ấn nút xóa hiển thị tin nhắn
+    $('#delete').click(this.showDeleteMessagePopup.bind(this));
+    // Ấn nút có trong tin nhắn -> xóa và tắt tin nhắn
+    $('#dlgDeletePopup .f-btn').click(this.delete.bind(this));
+    // Ấn nút không trong tin nhắn -> không xóa và tắt tin nhắn
+    $('#dlgDeletePopup .f-second-btn').click(this.closeDeleteMessagePopup.bind(this));
+    // Lưu thông tin đồng thời kiểm tra mã nhân viên có hợp lệ không, nếu không thì hiện thông báo.
     $('#btnSaveData').click(this.saveData.bind(this));
+    $('#dlgSaveErrorPopup .f-btn').click(this.closeSaveErrorPopup.bind(this));
+
+    // Chức năng validate dữ liệu -------------------------------------------------------------------------------------
+    // Validate Tên
+    $('#txtEmployeeName').keyup(this.validateEmployeeName);
+    // Validate Đơn vị
+    $('#cbxDepartment').on('click', '.f-combobox-item', this.validateDepartmentName);
+    $('#cbxDepartment .f-combobox-input').keyup(this.validateDepartmentNameOnKeyUp.bind(this));
+
+    // Chức năng phân trang -------------------------------------------------------------------------------------------
     // Bấm nút chuyển trang
     $('.page-navigator').on('click', '.page-number', this.pageNumberOnClick.bind(this));
     // Bấm nút chuyển trang trước đó
@@ -45,6 +62,148 @@ class EmployeePage {
     // LoadData khi ấn chọn một lựa chọn trong combobox Paging
     $('#cbxPaging').on('click', '.f-combobox-item', this.loadData.bind(this));
     $('#cbxPaging').keyup(this.cbxPagingEnter.bind(this));
+    // Phân trang khi ấn search button
+    $('#searchBtn').click(this.loadData.bind(this));
+    // Phân trang khi ấn enter vào input searchText
+    $('#searchText').keydown(this.searchTextOnEnter.bind(this));
+  }
+
+  searchTextOnEnter(event) {
+    if (event.keyCode == 13) {
+      this.loadData.bind(this)();
+    }
+  }
+
+
+  closeSaveErrorPopup() {
+    // Tắt hiển thị dlgSaveErrorPopup
+    $('#dlgSaveErrorPopup').hide();
+    // Xóa dữ liệu hiển thị mã nhân viên bị trùng
+    $('#duplicatedEmployeeCode').text('');
+  }
+
+  /**
+   * Hiển thị tin nhắn xóa
+   */
+  showDeleteMessagePopup() {
+    // Tắt hiển thị contextMenu
+    $('#contextMenu').hide();
+
+    let employeeCode = $('#contextMenu').data('employeeCode');
+    $('#deletingEmployeeCode').text(employeeCode);
+    $('#dlgDeletePopup').show();
+  }
+
+  /**
+   * Tắt tin nhắn xóa
+   */
+  closeDeleteMessagePopup() {
+    // tắt khung hiển thị deleteMessage
+    $('#dlgDeletePopup').hide();
+    // Xóa dữ liệu khung context
+    $('#contextMenu').data('employeeId', null);
+    $('#contextMenu').data('employeeCode', null);
+    // Xóa dữ liệu trong dlgDeletePopup
+    $('#deletingEmployeeCode').text('');
+  }
+
+  /**
+   * Xóa dòng dữ liệu được chọn
+   * Author: Trang Hải Long (23/11/2021)
+   */
+  delete() {
+    let me = this;
+    let employeeId = $('#contextMenu').data('employeeId');
+
+    // Gọi đến api xóa thông tin nhân viên
+    $.ajax({
+      type: "DELETE",
+      url: `${this.employeeApiUrl}/${employeeId}`,
+      success: function (response) {
+        CommonJS.toastMsgPopup($('.m-toast-delete'));
+        // Load lại dữ liệu
+        me.loadData();
+        // Tắt contextMenu
+        me.closeDeleteMessagePopup();
+      }
+    });
+  }
+
+
+  validateEmployeeName(event) {
+    switch (event.keyCode) {
+      case 38: // arrow-up
+      case 13: // enter
+      case 40: // arrow-down
+      case 9: // tab
+      case 16: // shift
+      case 17: // ctrl
+      case 18: // alt
+        break;
+
+      default: // Các kí tự thông thường
+        if (event.currentTarget) {
+          if (event.currentTarget.value == '') {
+            $(this).addClass('error');
+            $(this).attr('title', 'Tên không được để trống.');
+          } else {
+            $(this).removeClass('error');
+            $(this).attr('title', null);
+          }
+        }
+        break;
+    }
+  }
+
+  validateDepartmentName(event) {
+    let me = $('#cbxDepartment .f-combobox-input');
+    if (me) {
+      for (const department of $('#cbxDepartment').data('itemDataElements')) {
+        let departmentName = department.innerText.trim();
+        if (me.val() == departmentName) {
+          $(me).removeClass('error');
+          $(me).attr('title', null);
+          return;
+        }
+      }
+      let msg = me.val() == '' ? 'Đơn vị không được để trống' : 'Dữ liệu không có trong danh sách';
+
+      $(me).addClass('error');
+      $(me).attr('title', msg);
+      return
+    }
+  }
+
+  validateDepartmentNameOnKeyUp(event) {
+    switch (event.keyCode) {
+      case 38: // arrow-up
+      case 40: // arrow-down
+      case 9: // tab
+      case 16: // shift
+      case 17: // ctrl
+      case 18: // alt
+        return
+      default: // Các kí tự thông thường
+        this.validateDepartmentName();
+    }
+  }
+
+  showContextMenu() {
+    let contextMenu = $('#contextMenu');
+    contextMenu.toggle();
+    let top_pos = $(this).offset().top;
+    let left_pos = $(this).offset().left;
+    if (top_pos + 24 <= window.innerHeight - 90) {
+      contextMenu.css('top', `calc(${top_pos}px + 24px)`);
+    } else {
+      contextMenu.css('top', `calc(${top_pos}px - 88px)`);
+    }
+    contextMenu.css('left', `calc(${left_pos}px - 86px)`);
+
+    let employeeId = $(this.parentElement.parentElement.parentElement).data('value');
+    let employeeCode = $(this.parentElement.parentElement.parentElement).data('employeeCode');
+    $('#contextMenu').data('employeeId', employeeId);
+    $('#contextMenu').data('employeeCode', employeeCode);
   }
 
   cbxPagingEnter(event) {
@@ -84,23 +243,11 @@ class EmployeePage {
     this.loadData();
   }
 
-  showContextMenu() {
-    let contextMenu = $('#contextMenu');
-    contextMenu.toggle();
-    let top_pos = $(this).offset().top;
-    let left_pos = $(this).offset().left;
-    contextMenu.css('top', `calc(${top_pos}px + 24px)`);
-    contextMenu.css('left', `calc(${left_pos}px - 86px)`);
-
-    let employeeId = $(this.parentElement.parentElement.parentElement).data('value')
-    $('#contextMenu').data('employeeId', employeeId);
-  }
-
   /* #region Nạp dữ liệu */
 
   /**
    * Lấy dữ liệu từ database xây dựng các dòng hiển thị trên bảng
-   * Author: Trang Hải Long (21/11/2021)
+   * Author: Trang Hải Long (02/12/2021)
    */
   loadData() {
     // Làm sạch bảng
@@ -111,12 +258,15 @@ class EmployeePage {
 
     // Lấy thông tin phân trang
     // Từ khóa tìm kiếm
-    let searchText = $('#searchText').val();
-    let pageSize = 10; // mặc định 1 trang 10 dòng
+    let searchText = String($('#searchText').val());
+    // Số dòng / 1 trang, mặc định 1 trang 10 dòng
+    let pageSize = 10;
     if ($('#cbxPaging').data('value')) {
       pageSize = $('#cbxPaging').data('value');
     }
-    let pageNumber = this.pageNumber; // mặc định trang 1
+    // Lấy trang, mặc định ở trang 1
+    let pageNumber = this.pageNumber;
+    // Nếu đã lấy dữ liệu phân trang => có totalPage thì xử lý gán pageNumber cho trường hợp gọi api phân trang các lần sau (có thể thông qua bấm số trang hoặc nút chuyển trang "Trước", "Sau")
     if (pageNumber > this.totalPage) {
       pageNumber = this.totalPage;
     }
@@ -125,16 +275,7 @@ class EmployeePage {
     }
     this.pageNumber = pageNumber;
 
-
-    // // Nếu đã gen ra các trang thì thực hiện gán pageNumber theo số trang đang active
-    // if ($('.page-number')) {
-    //   for (const page of $('.page-number')) {
-    //     if (page.classList.contains('active')) {
-    //       pageNumber = page.textContent;
-    //     }
-    //   }
-    // }
-
+    // Lấy link api
     let filterApi = `${this.employeeApiUrl}/filter?pageSize=${pageSize}&pageNumber=${pageNumber}`;
     if (searchText.length >= 1) {
       filterApi = filterApi + `&employeeFilter=${searchText}`;
@@ -155,58 +296,60 @@ class EmployeePage {
       }
     });
 
-    let employees = data.Data;
-    let totalRecord = data.TotalRecord;
-    $('#totalRecord').text(totalRecord);
-    // Tổng số trang lấy được
-    let totalPage = data.TotalPage;
-    this.totalPage = totalPage;
-    // Số thứ tự trang hiện tại: pageNumber
+    // Nếu có dữ liệu trả về
+    if (data != undefined) {
+      let employees = data.Data;
+      let totalRecord = data.TotalRecord;
+      $('#totalRecord').text(totalRecord);
+      // Tổng số trang lấy được
+      let totalPage = data.TotalPage;
+      this.totalPage = totalPage;
+      // Số thứ tự trang hiện tại: pageNumber
 
-    // gen ra số trang
-    // xóa tất cả pageNumber
-    $('.page-number-list').empty();
-    // a = (trang hiện tại) % 5
-    let a = pageNumber % 5;
-    // b = (trang hiện tại - 1) / 5
-    let b = Math.floor((pageNumber - 1) / 5);
-    // Nếu b*5 + 5 > tổng số trang
-    if (b * 5 + 5 > totalPage) {
-      // Số trang chạy từ b*5 + 1 -> tổng số trang
-      for (let i = b * 5 + 1; i <= totalPage; i++) {
-        if (i == pageNumber) {
-          $('.page-number-list').append(`<div class="page-number active">${i}</div>`)
-        } else {
-          $('.page-number-list').append(`<div class="page-number">${i}</div>`)
+      // gen ra số trang
+      // xóa tất cả pageNumber
+      $('.page-number-list').empty();
+      // a = (trang hiện tại) % 5
+      let a = pageNumber % 5;
+      // b = (trang hiện tại - 1) / 5
+      let b = Math.floor((pageNumber - 1) / 5);
+      // Nếu b*5 + 5 > tổng số trang
+      if (b * 5 + 5 > totalPage) {
+        // Số trang chạy từ b*5 + 1 -> tổng số trang
+        for (let i = b * 5 + 1; i <= totalPage; i++) {
+          if (i == pageNumber) {
+            $('.page-number-list').append(`<div class="page-number active">${i}</div>`)
+          } else {
+            $('.page-number-list').append(`<div class="page-number">${i}</div>`)
+          }
+        }
+      } else { // Nếu b*5 + 5 <= tổng số trang
+        // Số trang chạy từ b*5 + 1 -> b*5 + 5
+        for (let i = 1; i <= 5; i++) {
+          if (b * 5 + i == pageNumber) {
+            $('.page-number-list').append(`<div class="page-number active">${b*5 +i}</div>`);
+          } else {
+            $('.page-number-list').append(`<div class="page-number">${b*5 +i}</div>`);
+          }
         }
       }
-    } else { // Nếu b*5 + 5 <= tổng số trang
-      // Số trang chạy từ b*5 + 1 -> b*5 + 5
-      for (let i = 1; i <= 5; i++) {
-        if (b * 5 + i == pageNumber) {
-          $('.page-number-list').append(`<div class="page-number active">${b*5 +i}</div>`);
-        } else {
-          $('.page-number-list').append(`<div class="page-number">${b*5 +i}</div>`);
-        }
-      }
-    }
 
-    // Build Table
-    $.each(employees, function (indexInArray, employee) {
-      let employeeCode = employee.EmployeeCode;
-      let employeeName = employee.EmployeeName;
-      let genderName = employee.GenderName;
-      let dateOfBirth = CommonJS.formatDateDDMMYYYY(employee.DateOfBirth);
-      let identityNumber = employee.IdentityNumber;
-      let positionName = employee.PositionName;
-      let departmentName = employee.DepartmentName;
-      let bankAccountNumber = employee.BankAccountNumber;
-      let bankName = employee.BankName;
-      let bankBranchName = employee.BankBranchName;
+      // Build Table
+      $.each(employees, function (indexInArray, employee) {
+        let employeeCode = employee.EmployeeCode;
+        let employeeName = employee.EmployeeName;
+        let genderName = employee.GenderName;
+        let dateOfBirth = CommonJS.formatDateDDMMYYYY(employee.DateOfBirth);
+        let identityNumber = employee.IdentityNumber;
+        let positionName = employee.PositionName;
+        let departmentName = employee.DepartmentName;
+        let bankAccountNumber = employee.BankAccountNumber;
+        let bankName = employee.BankName;
+        let bankBranchName = employee.BankBranchName;
 
-      let employeeId = employee.EmployeeId;
+        let employeeId = employee.EmployeeId;
 
-      let tr = `<tr>
+        let tr = `<tr>
                   <td class="text-align-left"><input type="checkbox"></td>
                   <td class="text-align-left">${employeeCode}</td>
                   <td class="text-align-left">${employeeName}</td>
@@ -228,12 +371,14 @@ class EmployeePage {
                   </td>
                 </tr>
                 `;
-      $("#tblEmployee tbody").prepend(tr);
+        $("#tblEmployee tbody").prepend(tr);
 
-      // Thêm data employeeId cho từng dòng dữ liệu nhân viên
-      $(`tbody tr:nth-child(1)`).data('value', employeeId);
-    });
-
+        // Thêm data employeeId cho từng dòng dữ liệu nhân viên
+        $(`tbody tr:nth-child(1)`).data('value', employeeId);
+        // Thêm data employeeCode cho từng dòng dữ liệu nhân viên
+        $(`tbody tr:nth-child(1)`).data('employeeCode', employeeCode);
+      });
+    }
 
     // Ẩn màn hình chờ sau khi đã kết thúc nạp dữ liệu
     $('.f-loading').hide();
@@ -276,6 +421,11 @@ class EmployeePage {
     $('#dlgPopup').hide();
     // Reset dữ liệu employeeId khi tắt popup
     $('#btnSaveData').data('employeeId', null);
+    // Xóa class error cho các input
+    $('input').removeClass('error');
+    // Reset hiển thị của combobox dropdown btn
+    $('.f-combobox-btn.combobox-dropdown-btn').removeClass('combo-actions');
+    $('.f-combobox-data').hide();
   }
 
   /**
@@ -402,7 +552,7 @@ class EmployeePage {
 
     // Lấy dữ liệu từ combobox Form:
     employee['DepartmentId'] = $('#cbxDepartment').data('value');
-
+    let employeeCode = employee['EmployeeCode'];
     // Gọi api cất dữ liệu
     if (this.FormMode == Enum.FormMode.Add) {
       $.ajax({
@@ -416,6 +566,13 @@ class EmployeePage {
         },
         error: function (res) {
           console.log(res);
+          // Hiển thị thông báo trùng lặp employeeCode
+          if (res.status == 400) {
+            if (res.responseJSON.devMsg == 'Mã khách hàng đã tồn tại trong hệ thống.') { // Mã khách hàng?
+              $('#duplicatedEmployeeCode').text(employeeCode);
+              $('#dlgSaveErrorPopup').show();
+            }
+          }
         }
       });
     } else {
@@ -434,31 +591,6 @@ class EmployeePage {
         }
       });
     }
-
     me.closePopup();
   }
-
-  /**
-   * Xóa dòng dữ liệu được chọn
-   * Author: Trang Hải Long (23/11/2021)
-   */
-  delete() {
-    let me = this;
-    let employeeId = $('#contextMenu').data('employeeId');
-
-    $.ajax({
-      type: "DELETE",
-      url: `${this.employeeApiUrl}/${employeeId}`,
-      success: function (response) {
-        CommonJS.toastMsgPopup($('.m-toast-delete'));
-        // Load lại dữ liệu
-        me.loadData();
-        // Tắt Khung context
-        $('#contextMenu').hide();
-        $('#contextMenu').data('employeeId', null);
-      }
-    });
-  }
-
-
 }

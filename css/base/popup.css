@@ -1,4 +1,6 @@
-.f-dialog-modal {
+.f-dialog-modal,
+.f-save-error-modal,
+.f-delete-modal {
   z-index: 999;
   display: none;
   position: fixed;
@@ -69,7 +71,7 @@
 }
 
 /* DIALOG-CONTENT */
-.f-dialog-content {
+#dlgPopup .f-dialog-content {
   display: flex;
   width: 900px;
 }
@@ -135,4 +137,38 @@
 
 .f-dialog-box .f-dialog-content-right {
   flex-direction: column;
+}
+
+
+/* MESSAGE BOX POPUP */
+.f-message-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 32px;
+  background-color: #fff;
+}
+
+.f-message-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.f-message-text {
+  overflow: auto;
+  max-height: 400px;
+  margin-bottom: 32px;
+  padding-left: 16px;
+  padding-top: 12px;
+}
+
+.f-mess-line {
+  height: 1px;
+  background-color: #b8bcc3;
+  margin-bottom: 20px;
+}
+
+.f-message-footer {
+  display: flex;
 }

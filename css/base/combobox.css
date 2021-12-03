@@ -56,6 +56,9 @@
 .f-combobox-input:focus+.combobox-dropdown-btn {
   border-color: #2ca01c;
 }
+.f-combobox-input.error+.combobox-dropdown-btn {
+  border-color: red;
+}
 
 .combobox-dropdown-btn.combo-actions .f-icon-arrow-down{
   transform: rotate(180deg);

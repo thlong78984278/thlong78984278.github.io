@@ -117,7 +117,7 @@
       <div class="f-flex-space"></div>
       <div class="toolbar-search-box">
         <input id="searchText" type="text" placeholder="Tìm theo mã, tên nhân viên" class="f-input">
-        <div class="f-icon f-icon-search icon-16"></div>
+        <div id="searchBtn" class="f-icon f-icon-search icon-16"></div>
       </div>
       <div id="btnRefresh">
         <div class="f-icon f-icon-refresh icon-24"></div>
@@ -192,7 +192,9 @@
 
   </div>
 
-  <!-- POPUP -->
+
+
+  <!-- DIALOG POPUP: INSERT, UPDATE EMPLOYEE -->
   <div id="dlgPopup" class="f-dialog-modal">
     <div class="f-dialog-box">
       <div class="f-dialog-header">
@@ -212,7 +214,6 @@
           <div id="btnClosePopup" class="f-icon f-icon-close icon-24"></div>
         </div>
       </div>
-
 
       <div class="f-dialog-content">
         <div class="f-dialog-content-left">
@@ -336,6 +337,46 @@
         <div class="f-flex-space"></div>
         <button class="f-second-btn" style="margin: 0 10px;">Cất</button>
         <button class="f-btn" id="btnSaveData">Cất và Thêm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP: DELETE EMPLOYEE!!! -->
+  <div id="dlgDeletePopup" class="f-delete-modal">
+    <div class="f-message-box">
+      <div class="f-message-content">
+        <div class="f-message-icon">
+          <div class="f-icon f-icon-exclaimation-warning icon-48"></div>
+        </div>
+        <span class="f-message-text">
+          Bạn có thực sự muốn xóa Nhân viên <<span id="deletingEmployeeCode"></span>> không?
+        </span>
+      </div>
+      <div class="f-mess-line"></div>
+      <div class="f-message-footer">
+        <button class="f-second-btn">Không</button>
+        <div class="f-flex-space"></div>
+        <button class="f-btn">Có</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- POPUP: EMPLOYEECODE ALREADY EXISTED!!! -->
+  <div id="dlgSaveErrorPopup" class="f-save-error-modal">
+    <div class="f-message-box">
+      <div class="f-message-content">
+        <div class="f-message-icon">
+          <div class="f-icon f-icon-exclaimation-warning icon-48"></div>
+        </div>
+        <span class="f-message-text">
+          Mã nhân viên <<span id="duplicatedEmployeeCode"></span>> đã tồn tại trong hệ thống, vui lòng kiểm tra lại.
+        </span>
+      </div>
+      <div class="f-mess-line"></div>
+      <div class="f-message-footer">
+        <div class="f-flex-space"></div>
+        <button class="f-btn">Đồng ý</button>
       </div>
     </div>
   </div>

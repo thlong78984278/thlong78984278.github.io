@@ -16,3 +16,7 @@
   border: 1px solid #2ca01c;
   outline: unset;
 }
+
+input.error {
+  border-color: red !important;
+}

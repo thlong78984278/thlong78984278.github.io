@@ -35,7 +35,16 @@
   flex-shrink: 0;
 }
 
+.icon-48 {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+}
 
+.f-icon-exclaimation-warning {
+  background-position: -592px -456px;
+}
 
 .f-icon-help {
   background-position: -88px -144px;
