@@ -10,6 +10,7 @@ input[type="radio"] {
   align-items: center;
   justify-content: center;
   margin: 0;
+  cursor: pointer;
 }
 
 input[type="radio"]:checked {
@@ -33,7 +34,6 @@ input[type="radio"]:checked::before {
   display: flex;
   align-items: center;
 }
-
 
 .f-radio-box .f-radio-option+.f-radio-option {
   display: flex;

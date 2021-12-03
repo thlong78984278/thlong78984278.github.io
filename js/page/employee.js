@@ -29,7 +29,7 @@ class EmployeePage {
     $('#btnClosePopup').click(this.closePopup);
     $('#btnCancelPopup').click(this.closePopup);
 
-    // Các chức năng Thêm / Sửa / Xóa cơ bản --------------------------------------------------------------------------
+    // Các chức năng Thêm / Sửa / Xóa cơ bản --------------------------------------------------------------------------------------------
     // Hiển thị form thêm mới nhân viên
     $('#btnAddEmployee').click(this.addEmployee.bind(this));
     // Hiển thị form update nhân viên
@@ -47,7 +47,7 @@ class EmployeePage {
     $('#btnSaveData').click(this.saveData.bind(this));
     $('#dlgSaveErrorPopup .f-btn').click(this.closeSaveErrorPopup.bind(this));
 
-    // Chức năng validate dữ liệu -------------------------------------------------------------------------------------
+    // Chức năng validate dữ liệu -------------------------------------------------------------------------------------------
     // Validate Tên
     $('#txtEmployeeName').keyup(this.validateEmployeeName);
     // Validate Đơn vị
@@ -68,6 +68,19 @@ class EmployeePage {
     $('#searchBtn').click(this.loadData.bind(this));
     // Phân trang khi ấn enter vào input searchText
     $('#searchText').keydown(this.searchTextOnEnter.bind(this));
+
+    // Focus vào ô nhập liệu đầu tiên
+    $('#txtBankBranchName').keydown(this.toTheBeginning.bind(this));
+  }
+
+
+  /**
+   * Tab trở lại ô nhập liệu đầu tiên trong dialog Thêm/Sửa thông tin nhân viên
+   */
+  toTheBeginning(event) {
+    if (event.keyCode == 9) {
+      $('#nothing').focus();
+    }
   }
 
   /* #region Validate thông tin nhập */
@@ -305,16 +318,16 @@ class EmployeePage {
 
         let tr = `<tr>
                   <td class="text-align-left"><input type="checkbox"></td>
-                  <td class="text-align-left">${employeeCode}</td>
-                  <td class="text-align-left">${employeeName}</td>
-                  <td class="text-align-left">${genderName}</td>
-                  <td class="text-align-center">${dateOfBirth}</td>
-                  <td class="text-align-left">${identityNumber}</td>
-                  <td class="text-align-left">${positionName}</td>
-                  <td class="text-align-left">${departmentName}</td>
-                  <td class="text-align-left">${bankAccountNumber}</td>
-                  <td class="text-align-left">${bankName}</td>
-                  <td class="text-align-left">${bankBranchName}</td>
+                  <td class="text-align-left">${employeeCode?employeeCode:''}</td>
+                  <td class="text-align-left">${employeeName?employeeName:''}</td>
+                  <td class="text-align-left">${genderName?genderName:''}</td>
+                  <td class="text-align-center">${dateOfBirth?dateOfBirth:''}</td>
+                  <td class="text-align-left">${identityNumber?identityNumber:''}</td>
+                  <td class="text-align-left">${positionName?positionName:''}</td>
+                  <td class="text-align-left">${departmentName?departmentName:''}</td>
+                  <td class="text-align-left">${bankAccountNumber?bankAccountNumber:''}</td>
+                  <td class="text-align-left">${bankName?bankName:''}</td>
+                  <td class="text-align-left">${bankBranchName?bankBranchName:''}</td>
                   <td class="text-align-center">
                     <div class="f-utility-dropdown">
                       <div class="f-dropdown-text text-align-center">Sửa</div>
@@ -382,6 +395,10 @@ class EmployeePage {
     // Reset hiển thị của combobox dropdown btn
     $('.f-combobox-btn.combobox-dropdown-btn').removeClass('combo-actions');
     $('.f-combobox-data').hide();
+    // Reset hiển thị radio button
+    for (const btn of $('#dlgPopup input[type="radio"]')) {
+      btn.checked = false;
+    }
   }
 
   /**
@@ -470,6 +487,14 @@ class EmployeePage {
           }
         });
         $('#cbxDepartment input').val(departmentName);
+
+        // Bind dữ liệu giới tính
+        let gender = employee['Gender'];
+        for (const btn of $('#dlgPopup input[type="radio"]')) {
+          if (btn.value == gender) {
+            btn.checked = true;
+          }
+        }
       }
     });
 
@@ -507,6 +532,7 @@ class EmployeePage {
         employee['Gender'] = btn.value;
       }
     }
+    // employee['Gender'] = $('input[name="Gender"]:checked').val();
 
     // Lấy dữ liệu từ combobox Form:
     employee['DepartmentId'] = $('#cbxDepartment').data('value');
@@ -586,7 +612,7 @@ class EmployeePage {
   }
 
   /* #region Chức năng xóa */
-   
+
   /**
    * Hiển thị tin nhắn xóa
    */
