@@ -23,7 +23,9 @@ class EmployeePage {
   }
 
   initEvents() {
+    // Làm mới dữ liệu
     $('#btnRefresh').click(this.loadData.bind(this));
+    // Tắt dialog Thêm/Sửa thông tin nhân viên
     $('#btnClosePopup').click(this.closePopup);
     $('#btnCancelPopup').click(this.closePopup);
 
@@ -68,67 +70,7 @@ class EmployeePage {
     $('#searchText').keydown(this.searchTextOnEnter.bind(this));
   }
 
-  searchTextOnEnter(event) {
-    if (event.keyCode == 13) {
-      this.loadData.bind(this)();
-    }
-  }
-
-
-  closeSaveErrorPopup() {
-    // Tắt hiển thị dlgSaveErrorPopup
-    $('#dlgSaveErrorPopup').hide();
-    // Xóa dữ liệu hiển thị mã nhân viên bị trùng
-    $('#duplicatedEmployeeCode').text('');
-  }
-
-  /**
-   * Hiển thị tin nhắn xóa
-   */
-  showDeleteMessagePopup() {
-    // Tắt hiển thị contextMenu
-    $('#contextMenu').hide();
-
-    let employeeCode = $('#contextMenu').data('employeeCode');
-    $('#deletingEmployeeCode').text(employeeCode);
-    $('#dlgDeletePopup').show();
-  }
-
-  /**
-   * Tắt tin nhắn xóa
-   */
-  closeDeleteMessagePopup() {
-    // tắt khung hiển thị deleteMessage
-    $('#dlgDeletePopup').hide();
-    // Xóa dữ liệu khung context
-    $('#contextMenu').data('employeeId', null);
-    $('#contextMenu').data('employeeCode', null);
-    // Xóa dữ liệu trong dlgDeletePopup
-    $('#deletingEmployeeCode').text('');
-  }
-
-  /**
-   * Xóa dòng dữ liệu được chọn
-   * Author: Trang Hải Long (23/11/2021)
-   */
-  delete() {
-    let me = this;
-    let employeeId = $('#contextMenu').data('employeeId');
-
-    // Gọi đến api xóa thông tin nhân viên
-    $.ajax({
-      type: "DELETE",
-      url: `${this.employeeApiUrl}/${employeeId}`,
-      success: function (response) {
-        CommonJS.toastMsgPopup($('.m-toast-delete'));
-        // Load lại dữ liệu
-        me.loadData();
-        // Tắt contextMenu
-        me.closeDeleteMessagePopup();
-      }
-    });
-  }
-
+  /* #region Validate thông tin nhập */
 
   validateEmployeeName(event) {
     switch (event.keyCode) {
@@ -188,24 +130,22 @@ class EmployeePage {
     }
   }
 
-  showContextMenu() {
-    let contextMenu = $('#contextMenu');
-    contextMenu.toggle();
-    let top_pos = $(this).offset().top;
-    let left_pos = $(this).offset().left;
-    if (top_pos + 24 <= window.innerHeight - 90) {
-      contextMenu.css('top', `calc(${top_pos}px + 24px)`);
-    } else {
-      contextMenu.css('top', `calc(${top_pos}px - 88px)`);
-    }
-    contextMenu.css('left', `calc(${left_pos}px - 86px)`);
+  /* #endregion */
 
-    let employeeId = $(this.parentElement.parentElement.parentElement).data('value');
-    let employeeCode = $(this.parentElement.parentElement.parentElement).data('employeeCode');
-    $('#contextMenu').data('employeeId', employeeId);
-    $('#contextMenu').data('employeeCode', employeeCode);
+  /* #region Phân trang */
+
+  /**
+   * load dữ liệu khi nhấn enter trong input textSearch
+   */
+  searchTextOnEnter(event) {
+    if (event.keyCode == 13) {
+      this.loadData.bind(this)();
+    }
   }
 
+  /**
+   * load dữ liệu khi đổi số dòng / trang ở combobox
+   */
   cbxPagingEnter(event) {
     // debugger
     switch (event.keyCode) {
@@ -222,17 +162,26 @@ class EmployeePage {
     }
   }
 
+  /**
+   * Chuyển trang trước (nếu có) khi nhấn nút Trước
+   */
   previousPageOnClick() {
     // gen ra số trang
     this.pageNumber -= 1;
     this.loadData();
   }
 
+  /**
+   * Chuyển trang sau (nếu có) khi nhấn nút Sau
+   */
   nextPageOnClick() {
     this.pageNumber += 1;
     this.loadData();
   }
 
+  /**
+   * Chuyển đến trang n khi nhấn vào số trang n
+   */
   pageNumberOnClick(event) {
     // Xóa hết class active của các nút
     $('.page-number').removeClass('active');
@@ -243,6 +192,7 @@ class EmployeePage {
     this.loadData();
   }
 
+
   /* #region Nạp dữ liệu */
 
   /**
@@ -252,6 +202,10 @@ class EmployeePage {
   loadData() {
     // Làm sạch bảng
     $("#tblEmployee tbody").empty();
+    let checkboxes = $("input[type='checkbox']");
+    for (const checkbox of checkboxes) {
+      checkbox.checked = false;
+    }
 
     // Hiển thị màn hình chờ
     $('.f-loading').show();
@@ -412,8 +366,10 @@ class EmployeePage {
 
   /* #endregion */
 
+  /* #endregion */
+
   /**
-   * Tắt dialog
+   * Tắt dialog Thêm/Sửa dữ liệu
    * Author: Trang Hải Long (23/11/2021)
    */
   closePopup() {
@@ -521,6 +477,8 @@ class EmployeePage {
     $('#btnSaveData').data('employeeId', employeeId);
   }
 
+  /* #region Cất dữ liệu */
+
   /**
    * Cất dữ liệu người dùng nhập lên kho
    * Author: Trang Hải Long (23/11/2021)
@@ -593,4 +551,89 @@ class EmployeePage {
     }
     me.closePopup();
   }
+
+  /**
+   * Tắt tin nhắn mã nhân viên trùng
+   */
+  closeSaveErrorPopup() {
+    // Tắt hiển thị dlgSaveErrorPopup
+    $('#dlgSaveErrorPopup').hide();
+    // Xóa dữ liệu hiển thị mã nhân viên bị trùng
+    $('#duplicatedEmployeeCode').text('');
+  }
+
+  /* #endregion */
+
+  /**
+   * Hiển thị contextMenu để thực hiện các chức năng Nhân bản / Xóa / Ngưng sử dụng
+   */
+  showContextMenu() {
+    let contextMenu = $('#contextMenu');
+    contextMenu.toggle();
+    let top_pos = $(this).offset().top;
+    let left_pos = $(this).offset().left;
+    if (top_pos + 24 <= window.innerHeight - 90) {
+      contextMenu.css('top', `calc(${top_pos}px + 24px)`);
+    } else {
+      contextMenu.css('top', `calc(${top_pos}px - 88px)`);
+    }
+    contextMenu.css('left', `calc(${left_pos}px - 86px)`);
+
+    let employeeId = $(this.parentElement.parentElement.parentElement).data('value');
+    let employeeCode = $(this.parentElement.parentElement.parentElement).data('employeeCode');
+    $('#contextMenu').data('employeeId', employeeId);
+    $('#contextMenu').data('employeeCode', employeeCode);
+  }
+
+  /* #region Chức năng xóa */
+   
+  /**
+   * Hiển thị tin nhắn xóa
+   */
+  showDeleteMessagePopup() {
+    // Tắt hiển thị contextMenu
+    $('#contextMenu').hide();
+
+    let employeeCode = $('#contextMenu').data('employeeCode');
+    $('#deletingEmployeeCode').text(employeeCode);
+    $('#dlgDeletePopup').show();
+  }
+
+  /**
+   * Tắt tin nhắn xóa
+   */
+  closeDeleteMessagePopup() {
+    // tắt khung hiển thị deleteMessage
+    $('#dlgDeletePopup').hide();
+    // Xóa dữ liệu khung context
+    $('#contextMenu').data('employeeId', null);
+    $('#contextMenu').data('employeeCode', null);
+    // Xóa dữ liệu trong dlgDeletePopup
+    $('#deletingEmployeeCode').text('');
+  }
+
+  /**
+   * Xóa dòng dữ liệu được chọn
+   * Author: Trang Hải Long (23/11/2021)
+   */
+  delete() {
+    let me = this;
+    let employeeId = $('#contextMenu').data('employeeId');
+
+    // Gọi đến api xóa thông tin nhân viên
+    $.ajax({
+      type: "DELETE",
+      url: `${this.employeeApiUrl}/${employeeId}`,
+      success: function (response) {
+        CommonJS.toastMsgPopup($('.m-toast-delete'));
+        // Load lại dữ liệu
+        me.loadData();
+        // Tắt contextMenu
+        me.closeDeleteMessagePopup();
+      }
+    });
+  }
+
+  /* #endregion */
+
 }

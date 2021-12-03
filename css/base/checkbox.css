@@ -11,6 +11,7 @@ input[type="checkbox"]{
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.3s;
 }
 
 input[type="checkbox"]::before{
@@ -27,11 +28,12 @@ input[type="checkbox"]::before{
     display: none;
 }
 
-input[type="checkbox"]:checked::before {
-  border-color: #2ca01c;
+input[type="checkbox"]:checked{
+    transform: rotate(90deg);
 }
 
-input[type="checkbox"]:checked::before{
-    display: block;
-    transform: rotate(45deg);
+input[type="checkbox"]:checked::before {
+  border-color: #2ca01c;
+  display: block;
+  transform: rotate(-45deg);
 }
